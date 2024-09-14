@@ -42,7 +42,7 @@ Have a look at the different sections of the OpenAPI specification. The specific
 ## Add mock response
 Since the backend service is not yet available, we will add a mock response to the API operation. This will allow us to test the API operation without having to wait for the backend service to be available.
 
-1) Click on the **POST /eanconsumptions** operation. Display name: 'Add new quarter EAN consumptions'
+1) Click on the **POST /ean-consumptions** operation. Display name: 'Add new quarter EAN consumptions'
 2) Click on 'Add policy' in the **Inbound processing** section.
 3) Select 'Mock responses' from the list of policies.
 4) Leave the default value '200 OK, application/json' for 'API Management response' and click 'Save'.
