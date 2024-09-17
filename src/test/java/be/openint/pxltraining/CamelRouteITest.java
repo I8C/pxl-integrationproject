@@ -21,25 +21,15 @@ import org.testcontainers.utility.DockerImageName;
 
 import java.io.File;
 
+/**
+ * an integration test using a kafka container.
+ * The "sendBody(...)" triggers the route and is expecting that the route consumer (from) has the uri: "direct:camelRoute".
+ * The test checks that exactly one event was sent to the topic and that the body of the event is the same as the one sent.
+ */
 @SpringBootTest
 @CamelSpringBootTest
 @EnableAutoConfiguration
 public class CamelRouteITest {
-
-  @Autowired
-  private CamelContext context;
-
-  @Container
-  private static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
-
-  @Autowired
-  ProducerTemplate producerTemplate;
-
-  @EndpointInject("mock:consumeKafkaTopic")
-  private MockEndpoint messageConsumer;
-
-  @Value("${kafka.energy.info.topic}")
-  private String topicName;
 
   private static final String jsonPayload = """
           		{
@@ -59,36 +49,52 @@ public class CamelRouteITest {
           		}
           """;
 
+  @Autowired
+  private CamelContext context;
+
+  @Container
+  private static KafkaContainer kafka = new KafkaContainer(DockerImageName.parse("confluentinc/cp-kafka:5.4.3"));
+
+  //a utility to send messages on a route
+  @Autowired
+  ProducerTemplate producerTemplate;
+
+  //a utility to mock an Camel consumer component
+  @EndpointInject("mock:consumeKafkaTopic")
+  private MockEndpoint messageConsumer;
+
+  @Value("${kafka.energy.info.topic}")
+  private String topicName;
+
   @DynamicPropertySource
   public static void activeQProperties(DynamicPropertyRegistry registry) {
     kafka.start();
+    //dynamically configures the url of the bootstrap server for the Camel Kafka producer.
     registry.add("camel.component.kafka.brokers", kafka::getBootstrapServers);
   }
-
 
   @Test
   public void testKafkaProduced() throws Exception {
 
     context.addRoutes(new RouteBuilder() {
-      File schemaFile = new File(CamelRouteITest.class.getClassLoader().getResource("schema-dailyEnergy.avsc").toURI());
-      Schema schema = new Schema.Parser().parse(schemaFile);
-      AvroDataFormat format = new AvroDataFormat(schema);
-
       @Override
       public void configure() throws Exception {
-        //without seekTo, it will wait for the next event coming at the end of the topic.
-        //This will not happen because of a raise condition.
-        //This route will most likely be ready too late and miss the event.
+        //seekTo=BEGINNING ensure that all the events on the topic are read.
+        //This ensures that if this route is started after that the event was sent it will still be consumed
         from("kafka:" + topicName + "?seekTo=BEGINNING")
             .log("unmarshalling ===")
-            .unmarshal(format)
             .to(messageConsumer);
       }
     });
 
+    // defining what is expected to happen on the mock
     messageConsumer.expectedMessageCount(1);
     messageConsumer.expectedBodiesReceived(jsonPayload);
-    producerTemplate.sendBody(CamelRoute.FROM, jsonPayload);
+
+    //send the event to the route to test
+    producerTemplate.sendBody("direct:camelRoute", jsonPayload);
+
+    //verifies that the expectation were fulfilled
     messageConsumer.assertIsSatisfied();
   }
 }
