@@ -1,0 +1,59 @@
+{
+	"type": "record",
+	"namespace": "cp4i",
+	"name": "dailyEnergyRegistered",
+	"fields": [
+		{
+			"name": "eventType",
+			"type": "string"
+		},
+		{
+			"name": "meterID",
+			"type": "string"
+		},
+		{
+			"name": "meterType",
+			"type": "string"
+		},
+		{
+			"name": "eanNumber",
+			"type": "string"
+		},
+		{
+			"name": "timestampStart",
+			"type": "string"
+		},
+		{
+			"name": "timestampEnd",
+			"type": "string"
+		},
+		{
+			"name": "unit",
+			"type": "string"
+		},
+		{
+			"name": "offtakeValue",
+			"type": "string"
+		},
+		{
+			"name": "offtakeStartValue",
+			"type": "string"
+		},
+		{
+			"name": "offtakeEndValue",
+			"type": "string"
+		},
+		{
+			"name": "injectionValue",
+			"type": "string"
+		},
+		{
+			"name": "injectionStartValue",
+			"type": "string"
+		},
+		{
+			"name": "injectionEndValue",
+			"type": "string"
+		}
+	]
+}
