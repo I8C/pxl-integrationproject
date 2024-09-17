@@ -9,7 +9,7 @@
     </parent>
 
     <groupId>be.openint</groupId>
-    <artifactId>PXLTraining base</artifactId>
+    <artifactId>pxl-training-base</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
