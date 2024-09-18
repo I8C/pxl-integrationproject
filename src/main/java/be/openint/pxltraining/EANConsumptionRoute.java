@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * a route that is scheduled to run one time after one second delay and is logging an "hello world" message.
  */
 @Component
-public class CamelRoute extends RouteBuilder {
+public class EANConsumptionRoute extends RouteBuilder {
 
     @Value("${kafka.energy.info.topic}")
     private String topicName;

@@ -1,12 +1,10 @@
 package be.openint.pxltraining;
 
-import org.apache.avro.Schema;
 import org.apache.camel.CamelContext;
 import org.apache.camel.EndpointInject;
 import org.apache.camel.ProducerTemplate;
 import org.apache.camel.builder.RouteBuilder;
 import org.apache.camel.component.mock.MockEndpoint;
-import org.apache.camel.dataformat.avro.AvroDataFormat;
 import org.apache.camel.test.spring.junit5.CamelSpringBootTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,7 @@ import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.utility.DockerImageName;
 
-import java.io.File;
+import java.util.stream.Collectors;
 
 /**
  * an integration test using a kafka container.
@@ -29,7 +27,7 @@ import java.io.File;
 @SpringBootTest
 @CamelSpringBootTest
 @EnableAutoConfiguration
-public class CamelRouteITest {
+public class EANConsumptionRouteITest {
 
   private static final String jsonPayload = """
           		{
@@ -89,10 +87,12 @@ public class CamelRouteITest {
 
     // defining what is expected to happen on the mock
     messageConsumer.expectedMessageCount(1);
-    messageConsumer.expectedBodiesReceived(jsonPayload);
+    String onlineJsonPayload = jsonPayload.lines().collect(Collectors.joining("")).replaceAll("\\s*", "");
+
+    messageConsumer.expectedBodiesReceived(onlineJsonPayload);
 
     //send the event to the route to test
-    producerTemplate.sendBody("direct:addEANConsumptions", jsonPayload);
+    producerTemplate.sendBody("direct:addEANConsumptions", onlineJsonPayload);
 
     //verifies that the expectation were fulfilled
     messageConsumer.assertIsSatisfied();
