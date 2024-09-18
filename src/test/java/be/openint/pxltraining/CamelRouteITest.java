@@ -67,7 +67,7 @@ public class CamelRouteITest {
   private String topicName;
 
   @DynamicPropertySource
-  public static void activeQProperties(DynamicPropertyRegistry registry) {
+  public static void runtimeConfiguration(DynamicPropertyRegistry registry) {
     kafka.start();
     //dynamically configures the url of the bootstrap server for the Camel Kafka producer.
     registry.add("camel.component.kafka.brokers", kafka::getBootstrapServers);
@@ -92,7 +92,7 @@ public class CamelRouteITest {
     messageConsumer.expectedBodiesReceived(jsonPayload);
 
     //send the event to the route to test
-    producerTemplate.sendBody("direct:camelRoute", jsonPayload);
+    producerTemplate.sendBody("direct:addEANConsumptions", jsonPayload);
 
     //verifies that the expectation were fulfilled
     messageConsumer.assertIsSatisfied();
