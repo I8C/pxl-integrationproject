@@ -5,7 +5,7 @@
 To create your Avro Schema from the avro definition:
 1. In your Route configuration method, read you definition and load it:  
    ```
-   File schemaFile = new File(Main.class.getClassLoader().getResource("schema-dailyEnergy.avsc").toURI());
+   File schemaFile = new File(App.class.getClassLoader().getResource("schema-dailyEnergy.avsc").toURI());
    Schema schema = new Schema.Parser().parse(schemaFile);
    ```
 2. Use the schema in your route to deserialize the request body and transform it in a binary Avro output ready for Kafka.  
@@ -30,5 +30,13 @@ To create your Avro Schema from the avro definition:
 		e.getIn().setBody(baos.toByteArray());
 	})
    ```
+3. configure your Kafka url and topic to use in your application.properties  
+   ```
+   camel.component.kafka.brokers=localhost:9092
+   kafka.energy.info.topic=testtopic
+   ```
+4. define the topic name in your route and use it
 3. run your application with the kafka in docker to check that you receive the event inside kafka.
    Becarefull, the body that you send has conform to the Avro definition otherwise you'll get an error because the input is invalid.
+   
+    [to step 4](exercice-1-step-4.md) 

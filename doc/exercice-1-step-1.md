@@ -49,3 +49,5 @@ Keep this in mind when you configure/program a route.
      .apiContextPath("/api-doc");
    ```
    Run your application an navigate to http://localhost:8080/api-doc to see the result.
+   
+    [to step 2](exercice-1-step-2.md) 

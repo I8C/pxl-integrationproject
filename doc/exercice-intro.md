@@ -12,4 +12,6 @@ The exercice will make you:
 1. Implement a REST API to collect meters data and send it to Kafka.
 2. Implement a schedulled API request call and send the response to Kafka.
 3. Extra: consume Kafka events en send an notification for each of them. 
-3. Extra: error handling. 
+3. Extra: error handling.
+
+    [to step 1](exercice-1-step-1.md) 

@@ -28,3 +28,5 @@ To be allowed to send events on it, you have to authenticate and to encrypt the 
      ```
 2. Run you application and send a valid request body to your API. Check (or ask to check if you don't have access) on the EEM dashboard if your event is present on the topic.  
    (ask url and credential to access it)
+
+    [to step 5](exercice-1-step-5.md) 

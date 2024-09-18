@@ -1,4 +1,4 @@
-# Exerce 1 step 5
+# Exercise 1 step 5
 
 ## deploy you application in the cloud
 
@@ -13,5 +13,5 @@
    _scp target/pxl-training-base-1.0-SNAPSHOT.jar -i [PATH-TO-PEM-KEY] ec2-user@[YOUR-VM-DNS]_
 5. run your application:  
    _java -jar pxl-training-base-1.0-SNAPSHOT.jar_
-6. test you application. In postman, change localhost with http://[YOUR-VM-DNS]:8080. 
+6. test your application. In postman, change localhost with http://[YOUR-VM-DNS]:8080. 
    Send a request with a valid body.
