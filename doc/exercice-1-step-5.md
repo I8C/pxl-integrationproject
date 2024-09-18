@@ -15,3 +15,5 @@
    _java -jar pxl-training-base-1.0-SNAPSHOT.jar_
 6. test your application. In postman, change localhost with http://[YOUR-VM-DNS]:8080. 
    Send a request with a valid body.
+
+    [to step 6](exercice-1-step-6.md) 
