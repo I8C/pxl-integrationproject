@@ -48,4 +48,4 @@ Now that you know that you have managed to send an event on a Kafka Test contain
 5. you should see the log of your route
 6. you should see the content of your request printed on the command line by your consumer in your container
    
-    [to step 3(exercice-1-step-3.md) 
+    [to step 3](exercice-1-step-3.md) 
