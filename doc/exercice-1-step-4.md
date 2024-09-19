@@ -5,12 +5,10 @@
 The real kafka is using enterprise requirements to connect.  
 To be allowed to send events on it, you have to authenticate and to encrypt the connection.
 
-1. got to the EEM console (ask url and credential to access it). There:  
-   - request credentials (button on the top left our "topic") and save them locally
-   - download the certificate in the PEM format and keep the location path for the configuration in the next point
-   - add this configuration to your application.properties adapted with your downloaded credentials:  
+1. Ask for the broker url, credentials en pem certificate to get access to it:  
+   Add that in the configuration of your application.properties:  
      
-	 Replace [BROKER-URL], [YOUR-FIRSTNAME], [USER], [PASSWORD], [TOPIC] and [PATH-TO-PEM] with the correct values.  
+	 Replace [BROKER-URL], [YOUR-FIRSTNAME], [USER], [PASSWORD], [TOPIC] and [PATH-TO-PEM] with the corresponding values.  
 	 Becarefull, reuse the existing property _camel.component.kafka.brokers_ instead of defining it twice!  
      
 	 ```
