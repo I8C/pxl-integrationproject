@@ -8,7 +8,7 @@ To be allowed to send events on it, you have to authenticate and to encrypt the 
 1. Ask for the broker url, credentials en pem certificate to get access to it:  
    Add that in the configuration of your application.properties:  
      
-	 Replace [BROKER-URL], [YOUR-FIRSTNAME], [USER], [PASSWORD], [TOPIC] and [PATH-TO-PEM] with the corresponding values.  
+	 Replace [BROKER-URL], [YOUR-FIRSTNAME], [USER], [PASSWORD] and [PATH-TO-PEM] with the corresponding values.  
 	 Becarefull, reuse the existing property _camel.component.kafka.brokers_ instead of defining it twice!  
      
 	 ```
@@ -22,7 +22,7 @@ To be allowed to send events on it, you have to authenticate and to encrypt the 
      camel.component.kafka.ssl-truststore-location=[PATH-TO-PEM]
      camel.component.kafka.ssl-truststore-type=PEM
      
-     kafka.energy.info.topic=[TOPIC]
+     kafka.energy.info.topic=ID_PRODUCE_READINGS
      ```
 2. Run you application and send a valid request body to your API. Check (or ask to check if you don't have access) on the EEM dashboard if your event is present on the topic.  
    (ask url and credential to access it)

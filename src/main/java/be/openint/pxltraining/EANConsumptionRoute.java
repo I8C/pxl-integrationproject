@@ -15,6 +15,7 @@ public class EANConsumptionRoute extends RouteBuilder {
 
     @Override
     public void configure() {
+
         // https://camel.apache.org/components/4.4.x/scheduler-component.html
         from("scheduler:runOnceForPXLTemplate?delay=1000&repeatCount=1")
             .setBody(constant(">>>>>>>>> hello world! <<<<<<<<<<"))

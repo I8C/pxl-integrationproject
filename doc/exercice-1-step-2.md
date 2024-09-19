@@ -17,7 +17,7 @@
    ```
 
 3. test that you are sending something to Kafa in an integration test using TestContainer framework.  
-   Open the test class _CamelRouteITest_.  
+   Open the test class _EANConsumptionRouteITest_.  
    Verify that the producerTemplate.sendBody(...) is set to the same value as your from(...) in you business route _CamelRoute_.  
    For your information, when a container is started, it choose a random port available to expose it on your machine.  
    In the _'runtimeConfiguration(...)'_ method, the server to connect is dynamically configured to the current local URI.  

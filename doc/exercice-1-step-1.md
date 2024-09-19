@@ -17,7 +17,7 @@ A Camel route is the configuration of Camel behaviour with Java.
 This means that once you are running your application and put a breakpoint in the route, when sending a message in it, th breakpoint will never be hit.  
 Keep this in mind when you configure/program a route.  
 
-1. define a REST route with the REST DSL Contract first approach: https://camel.apache.org/manual/rest-dsl-openapi.html  
+1. In the EANConsumptionRoute class, define a REST route with the REST DSL Contract first approach: https://camel.apache.org/manual/rest-dsl-openapi.html  
    Pass it the "PXL_EANConsumptions_API.json" file in the openApi configuration:  
    
    ```
