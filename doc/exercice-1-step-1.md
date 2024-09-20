@@ -22,7 +22,7 @@ Keep this in mind when you configure/program a route.
    
    ```
    rest()
-	.openApi("PXL_EANConsumptions_API.json");
+	.openApi("schema/PXL_EANConsumptions_API.json");
    ```
    
    Thanks to the contract first approach, Camel will expect to have a route with a specific "direct:" consumer name create by convention from the OpenAPI spec.  

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * a route that is scheduled to run one time after one second delay and is logging an "hello world" message.
+ * Exercise 1 start route
  */
 @Component
 public class EANConsumptionRoute extends RouteBuilder {
@@ -18,6 +18,7 @@ public class EANConsumptionRoute extends RouteBuilder {
 
         // https://camel.apache.org/components/4.4.x/scheduler-component.html
         from("scheduler:runOnceForPXLTemplate?delay=1000&repeatCount=1")
+            .id("EANConsumptionRoute")
             .setBody(constant(">>>>>>>>> hello world! <<<<<<<<<<"))
             // https://camel.apache.org/components/4.4.x/log-component.html
             .to("log:be.openint.pxltraining");

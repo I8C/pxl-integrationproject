@@ -2,19 +2,19 @@
 
 ## Define your Json Schema
 
-The Json format of the request body is defined in the resources/PXL_EANConsumptions_API.json file.  
+The Json format of the request body is defined in the resources/schema/PXL_EANConsumptions_API.json file.  
 We will use it to validate the imput.  
 
 1. in your route, after the _.log(...)_ call the [json-validator](https://camel.apache.org/components/4.4.x/json-validator-component.html) component:  
    ```
-   .to("json-validator:PXL_EANConsumptions_API.json")   
+   .to("json-validator:schema/PXL_EANConsumptions_API.json")   
    ``` 
    
 ## loop on each element of request body
 
 The request body is an array of EAN Consumptions.  
 We want to send 1 event per EAN Consumption to the Kafka topic.  
-Camel offers the [split](https://camel.apache.org/components/4.4.x/eips/split-eip.html) integratoin pattern to fulfill this.  
+Camel offers the [split](https://camel.apache.org/components/4.4.x/eips/split-eip.html) integration pattern to fulfill this.  
 Camel offers as well a Json Path language. It's a way to walk Json documents. You can use it in combination with split to itterate over each Json array element.  
 
 1. in your route after the _json-validator_ added in the previous point, add the split:  
@@ -37,7 +37,7 @@ Camel offers as well a Json Path language. It's a way to walk Json documents. Yo
 To create your Avro Schema from the avro definition:
 1. In your Route configuration method, read you definition and load it:  
    ```
-   File schemaFile = new File(App.class.getClassLoader().getResource("schema-dailyEnergy.avsc").toURI());
+   File schemaFile = new File(App.class.getClassLoader().getResource("schema/schema-dailyEnergy.avsc").toURI());
    Schema schema = new Schema.Parser().parse(schemaFile);
    ```
 2. Use the schema in your route to deserialize the request body and transform it in a binary Avro output ready for Kafka.  
@@ -68,7 +68,8 @@ To create your Avro Schema from the avro definition:
    kafka.energy.info.topic=testtopic
    ```
 4. define the topic name in your route and use it
-3. run your application with the kafka in docker to check that you receive the event inside kafka.
+
+5. run your application with the kafka in docker to check that you receive the event inside kafka.
    Becarefull, the body that you send has conform to the Avro definition otherwise you'll get an error because the input is invalid.
    
     [to step 4](exercice-1-step-4.md) 

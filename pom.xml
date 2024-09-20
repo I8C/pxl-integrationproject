@@ -69,10 +69,16 @@
             <artifactId>camel-openapi-java</artifactId>
             <version>${camel.version}</version>
         </dependency>
-        <!-- component used for HTTP transport -->
+        <!-- component used for REST DSL HTTP transport -->
         <dependency>
             <groupId>org.apache.camel.springboot</groupId>
             <artifactId>camel-platform-http-starter</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <!-- component used for REST component HTTP transport -->
+        <dependency>
+            <groupId>org.apache.camel.springboot</groupId>
+            <artifactId>camel-http-starter</artifactId>
             <version>${camel.version}</version>
         </dependency>
         <!-- using jackson under the hood when Json serialization is required -->
