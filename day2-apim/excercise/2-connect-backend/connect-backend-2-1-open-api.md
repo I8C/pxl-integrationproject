@@ -73,23 +73,18 @@ In order to test the API, we will use Postman to send a request to the API and v
 ```json
 [
     {
-        "EANNumber": "541440110000000101",
-        "MeterReadings": [
+        "eanNumber": "541440110000000101",
+        "meterReadings": [
             {
-                "meterID": "1SAG1234567890",
+                "meterId": "1SAG1234567890",
                 "dailyEnergy": [
                     {
                         "timestampStart": "2020-01-01T11:00:00Z",
                         "timestampEnd": "2020-01-02T11:00:00Z",
-                        "measurement": [
-                            {
-                                "unit": "kwh",
-                                "offtakeValue": 10.478,
-                                "offtakeValidationState": "VAL",
-                                "injectionValue": 8.377,
-                                "injectionValidationState": "VAL"
-                            }
-                        ]
+                        "offtakeValue": "10.478",
+                        "offtakeValidationState": "VAL",
+                        "injectionValue": "8.377",
+                        "injectionValidationState": "VAL"
                     }
                 ]
             }

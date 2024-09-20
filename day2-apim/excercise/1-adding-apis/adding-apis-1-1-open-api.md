@@ -5,7 +5,7 @@ There are multiple ways to import APIs into Azure API Management. One option wou
 ### OpenAPI
 First open the OpenAPI specification for the API that you want to import. The OpenAPI specification is a standard way to describe a RESTful API. It is a JSON or YAML file that contains all the information about the API, such as the endpoints, operations, request and response schemas, and more.
 
-Navigate to the website https://editor.swagger.io and through the **File** menu, select **Import file**. Select the file [PXL_EANConsumptions_API.yaml](../../assets/openapispec/PXL_EANConsumptions_API.yaml) and click **Open**. The OpenAPI specification will be loaded into the editor.
+Navigate to the website https://editor.swagger.io and through the **File** menu, select **Import file**. Select the file [PXL_EANConsumptions_API.json](../../assets/openapispec/PXL_EANConsumptions_API.json) and click **Open**. The OpenAPI specification will be loaded into the editor.
 
 ![Swagger editor](../../assets/images/swagger-editor.png)
 
@@ -20,7 +20,7 @@ Have a look at the different sections of the OpenAPI specification. The specific
 2) Click on **Add API**.  
 3) Under **Create from definition** select **OpenAPI**.  
 4) Select the **Full** option in the **Create from OpenAPI specification** dialog.  
-5) In the **Specification URL** field, click **Select a file** and upload the [PXL_EANConsumptions_API.yaml](../../assets/openapispec/PXL_EANConsumptions_API.yaml) file.
+5) In the **Specification URL** field, click **Select a file** and upload the [PXL_EANConsumptions_API.json](../../assets/openapispec/PXL_EANConsumptions_API.json) file.
 
 > **Note the intentional use of `http` instead of `https` as this backend does not presently support `https`.**  
 
