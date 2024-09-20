@@ -37,8 +37,9 @@ Camel offers as well a Json Path language. It's a way to walk Json documents. Yo
 To create your Avro Schema from the avro definition:
 1. In your Route configuration method, read you definition and load it:  
    ```
-   File schemaFile = new File(App.class.getClassLoader().getResource("schema/schema-dailyEnergy.avsc").toURI());
-   Schema schema = new Schema.Parser().parse(schemaFile);
+   ClassPathResource avroSchema = new ClassPathResource("schema/schema-dailyEnergy.avsc", this.getClass().getClassLoader());
+   InputStream avroSchemaIS = avroSchema.getInputStream();
+   Schema schema = new Schema.Parser().parse(avroSchemaIS);
    ```
 2. Use the schema in your route to deserialize the request body and transform it in a binary Avro output ready for Kafka.  
    Between the to(...) and the from of your route, add a processor that will handle that logic:  

@@ -47,8 +47,9 @@ To query the API we will use the Camel ['rest' component](https://camel.apache.o
 
 1. load the Avro schema. Add in the beginning of your configure method the loading of the schema:  
    ```
-   File schemaFile = new File(App.class.getClassLoader().getResource("schema/schema-imbalancedPrice.avsc").toURI());
-   Schema schema = new Schema.Parser().parse(schemaFile);
+   ClassPathResource avroSchema = new ClassPathResource("schema/schema-imbalancedPrice.avsc", this.getClass().getClassLoader());
+   InputStream avroSchemaIS = avroSchema.getInputStream();
+   Schema schema = new Schema.Parser().parse(avroSchemaIS);
    ```
 
 2. serialize the price in binary fromat with Avro.
