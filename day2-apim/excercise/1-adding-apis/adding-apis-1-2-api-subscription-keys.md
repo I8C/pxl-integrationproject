@@ -47,15 +47,55 @@ Now that we have created the subscription, we can retrieve the subscription key.
 2) Click on **...** and select **Show/hide keys** to reveal the subscription key.
 3) Copy the primary key and store it locally since it will be used later on during this excercise.
 
-## Test the API with the subscription key
-The first thing we will do is to test the API without the subscription key to see that it is not possible to call the API without it.
+## Test the API
+There are multiple ways to test an API in Azure API Management. One way is to use the **Test** tab in the Azure portal. This tab allows you to test the API operation by sending a request to the API and viewing the response.
 
-1) Go to postman and resend the request to the API without the subscription key.
-2) You should get a 401 Unauthorized response.
-![APIM Unauthorized subscrition](../../assets/images/apim-unauthorized-subscriptionkey.png)
+### Test the API operation inside the Azure portal
+1) Click on the **Test** tab.
+2) In the **Request body** section, enter the following JSON object if it's not present already:
 
-Next, we will add the subscription key to the request and resend it.
-1) Go to the Headers tab in Postman.
-2) Add a new header with the key **Ocp-Apim-Subscription-Key** and the value of the subscription key you copied earlier.
-3) Resend the request.
-4) You should now get a 200 OK response.
+```json
+[
+    {
+        "EANNumber": "541440110000000101",
+        "MeterReadings": [
+            {
+                "meterID": "1SAG1234567890",
+                "dailyEnergy": [
+                    {
+                        "timestampStart": "2020-01-01T11:00:00Z",
+                        "timestampEnd": "2020-01-02T11:00:00Z",
+                        "measurement": [
+                            {
+                                "unit": "kwh",
+                                "offtakeValue": 10.478,
+                                "offtakeValidationState": "VAL",
+                                "injectionValue": 8.377,
+                                "injectionValidationState": "VAL"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
+```
+3) Click on **Send** to send the request to the API.
+4) The response will be displayed in the **Response body** section. The response should be the mock response that was added to the API operation.
+![APIM Mock Reponse](../../assets/images/apim-mock-response.png)
+
+### Test the API operation using Postman
+Another way to test the API operation is to use a tool like Postman. Postman is a popular tool for testing APIs. It allows you to send requests to an API and view the response. You can download Postman from the following link: [Postman](https://www.postman.com/downloads/).
+
+1) Open Postman.
+2) Create a new request by clicking on the **New** button.
+3) Enter the request URL. The request URL is the URL of the API operation. You can find the URL in the **Request URL** section of the **Test** tab in the Azure portal.
+4) Select the **POST** method.
+5) Click on the **Body** tab.
+6) Select **raw** and **JSON** from the dropdown menu.
+7) Enter the request body in the text area. The request body is the same as the request body that was entered in the **Request body** section of the **Test** tab in the Azure portal.
+8) Add a new header with the key **Ocp-Apim-Subscription-Key** and the value of the subscription key you copied earlier.
+9) Click on the **Send** button to send the request to the API.
+10) The response will be displayed in the **Response** section. The response should be the mock response that was added to the API operation.
+![APIM Postman Mock Reponse](../../assets/images/apim-postman-mock-response.png)

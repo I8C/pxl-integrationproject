@@ -25,9 +25,9 @@ Have a look at the different sections of the OpenAPI specification. The specific
 > **Note the intentional use of `http` instead of `https` as this backend does not presently support `https`.**  
 
 6) While the backend service only runs on `HTTP`, we need to **set URL scheme to `Both`** to allow for Azure API Management ingress to occur on HTTPS for callers such as the Developer Portal.  
-7) Set the **API URL suffix** to `api/digital-meter-readingxx`.  Replace xx with your student number for this excercise.
-8) Change the **Display name** to `EANConsumptions API xx`. Replace xx with your student number for this excercise.
-9) Change the **Name** to `eanconsumptions-api-xx`. Replace xx with your student number for this excercise.
+7) Change the **Name** to `eanconsumptions-api-xx`. Replace xx with your student number for this excercise.
+8) Set the **API URL suffix** to `api/digital-meter-readingxx`.  Replace xx with your student number for this excercise.
+9) Change the **Display name** to `EANConsumptions API xx`. Replace xx with your student number for this excercise.
 10) Press **Create**.  
 
 ![APIM Add EAN consumption API](../../assets/images/apim-create-ean-openapispec.png)
@@ -37,7 +37,6 @@ Have a look at the different sections of the OpenAPI specification. The specific
 > The backend HTTP endpoint should have been set to 'http://placeholder.be/api/v1'. This is a placeholder and will be replaced with the actual backend endpoint in the next exercise.
 
   ![APIM Add EAN consumption API](../../assets/images/apim-create-ean-openapispec2.png)
-
 
 ## Add mock response
 Since the backend service is not yet available, we will add a mock response to the API operation. This will allow us to test the API operation without having to wait for the backend service to be available.
@@ -50,56 +49,3 @@ Since the backend service is not yet available, we will add a mock response to t
 
 ![APIM mocking](../../assets/images/apîm-mocking.png)
 ---
-
-## Test the API
-There are multiple ways to test an API in Azure API Management. One way is to use the **Test** tab in the Azure portal. This tab allows you to test the API operation by sending a request to the API and viewing the response.
-
-### Test the API operation inside the Azure portal
-1) Click on the **Test** tab.
-2) In the **Request body** section, enter the following JSON object if it's not present already:
-
-```json
-[
-    {
-        "EANNumber": "541440110000000101",
-        "MeterReadings": [
-            {
-                "meterID": "1SAG1234567890",
-                "dailyEnergy": [
-                    {
-                        "timestampStart": "2020-01-01T11:00:00Z",
-                        "timestampEnd": "2020-01-02T11:00:00Z",
-                        "measurement": [
-                            {
-                                "unit": "kwh",
-                                "offtakeValue": 10.478,
-                                "offtakeValidationState": "VAL",
-                                "injectionValue": 8.377,
-                                "injectionValidationState": "VAL"
-                            }
-                        ]
-                    }
-                ]
-            }
-        ]
-    }
-]
-```
-3) Click on **Send** to send the request to the API.
-4) The response will be displayed in the **Response body** section. The response should be the mock response that was added to the API operation.
-![APIM Mock Reponse](../../assets/images/apim-mock-response.png)
-
-### Test the API operation using Postman
-Another way to test the API operation is to use a tool like Postman. Postman is a popular tool for testing APIs. It allows you to send requests to an API and view the response. You can download Postman from the following link: [Postman](https://www.postman.com/downloads/).
-
-1) Open Postman.
-2) Create a new request by clicking on the **New** button.
-3) Enter the request URL. The request URL is the URL of the API operation. You can find the URL in the **Request URL** section of the **Test** tab in the Azure portal.
-4) Select the **POST** method.
-5) Click on the **Body** tab.
-6) Select **raw** and **JSON** from the dropdown menu.
-7) Enter the request body in the text area. The request body is the same as the request body that was entered in the **Request body** section of the **Test** tab in the Azure portal.
-8) Click on the **Send** button to send the request to the API.
-9) The response will be displayed in the **Response** section. The response should be the mock response that was added to the API operation.
-![APIM Postman Mock Reponse](../../assets/images/apim-postman-mock-response.png)
-
