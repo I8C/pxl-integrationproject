@@ -60,9 +60,10 @@ The token payload contains the following information:
             <value>{identity provider of the token}</value>
         </claim>
     </required-claims>
-</validate-jwt>
-   
-  
+    </validate-jwt>
+     <!-- Remove authorization header -->
+    <set-header name="Authorization" exists-action="delete" />
+    ```  
   Fill in above values with the values from the JWT token. 
 
 - Open postman and send a request to the API with the JWT token in the Authorization header. The Authorization header should look like: 
