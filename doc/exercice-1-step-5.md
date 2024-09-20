@@ -11,11 +11,13 @@
    From the root of your application run: _mvn clean package_  
 4. copy the resulting jar to your VM:   
    _scp target/pxl-training-base-1.0-SNAPSHOT.jar -i [PATH-TO-PEM-KEY] ec2-user@[YOUR-VM-DNS]_
-5. run your application:  
+5. copy your kafka pem certificate received in step 4 to your VM:  
+   _scp path/to/kafka.pem i [PATH-TO-PEM-KEY] ec2-user@[YOUR-VM-DNS]_
+6. run your application:  
    _nohup java -jar pxl-training-base-1.0-SNAPSHOT.jar &_
-6. test your application. In postman, change localhost with http://[YOUR-VM-DNS]:8080. 
+7. test your application. In postman, change localhost with http://[YOUR-VM-DNS]:8080. 
    Send a request with a valid body.
-7. optionnaly, if you want to stop your java application you have to kill it.  
+8. optionnaly, if you want to stop your java application you have to kill it.  
    Find the PID (process id). This is an example on a random VM:
    ```
    [ec2-user@ip-172-31-21-86 ~]$ ps -ef | grep java

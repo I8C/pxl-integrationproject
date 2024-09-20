@@ -8,7 +8,7 @@ To be allowed to send events on it, you have to authenticate and to encrypt the 
 1. Ask for the broker url, credentials en pem certificate to get access to it:  
    Add that in the configuration of your application.properties:  
      
-	 Replace [BROKER-URL], [YOUR-FIRSTNAME], [USER], [PASSWORD] and [PATH-TO-PEM] with the corresponding values.  
+	 Replace [BROKER-URL], [YOUR-FIRSTNAME], [USER], [PASSWORD] and [PEM-FILENAME] with the corresponding values.  
 	 Becarefull, reuse the existing property _camel.component.kafka.brokers_ instead of defining it twice!  
      
 	 ```
@@ -19,7 +19,7 @@ To be allowed to send events on it, you have to authenticate and to encrypt the 
      camel.component.kafka.security-protocol=SASL_SSL
      camel.component.kafka.sasl-mechanism=PLAIN
      camel.component.kafka.sasl-jaas-config=org.apache.kafka.common.security.plain.PlainLoginModule required username="[USER]" password="[PASSWORD]";
-     camel.component.kafka.ssl-truststore-location=[PATH-TO-PEM]
+     camel.component.kafka.ssl-truststore-location=[PEM-FILENAME]
      camel.component.kafka.ssl-truststore-type=PEM
      
      kafka.energy.info.topic=ID_PRODUCE_READINGS
