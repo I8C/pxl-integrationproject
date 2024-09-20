@@ -10,7 +10,7 @@ We will use the _Imbalance prices per minute (Near real-time)_ API: https://open
 ## Schedule the route every 60 seconds
 
 1. We need to gat the price real time. It is available every minute. Let's configure the secheduler in the route of the GetImbalancedPriceRoute class.  
-   Change `from("scheduler:runOnceForPXLTemplate?delay=1000&repeatCount=1")` to `from("scheduler:runOnceForPXLTemplate?delay=60000")`  
+   Change `from("scheduler:checkImbalancedPrice?delay=1000&repeatCount=1")` to `from("scheduler:checkImbalancedPrice?delay=60000")`  
    That is remove the repeatCount parameter that is limiting the schedule to one run.  
    Change the delay to 60000, that is 1 minute between every run.
    

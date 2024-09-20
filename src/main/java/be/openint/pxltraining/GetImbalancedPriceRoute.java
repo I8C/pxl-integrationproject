@@ -20,7 +20,7 @@ public class GetImbalancedPriceRoute extends RouteBuilder {
     public void configure() throws URISyntaxException, IOException {
 
         // https://camel.apache.org/components/4.4.x/scheduler-component.html
-        from("scheduler:runOnceForPXLTemplate?delay=1000&repeatCount=1")
+        from("scheduler:checkImbalancedPrice?delay=1000&repeatCount=1")
                 .id("GetImbalancedPriceRoute")
                 .setBody(constant(">>>>>>>>> hello world 2! <<<<<<<<<<"))
                 // https://camel.apache.org/components/4.4.x/log-component.html

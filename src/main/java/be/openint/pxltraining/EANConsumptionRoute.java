@@ -17,7 +17,7 @@ public class EANConsumptionRoute extends RouteBuilder {
     public void configure() {
 
         // https://camel.apache.org/components/4.4.x/scheduler-component.html
-        from("scheduler:runOnceForPXLTemplate?delay=1000&repeatCount=1")
+        from("scheduler:runOnceForPXLTrainingBase?delay=1000&repeatCount=1")
             .id("EANConsumptionRoute")
             .setBody(constant(">>>>>>>>> hello world! <<<<<<<<<<"))
             // https://camel.apache.org/components/4.4.x/log-component.html
