@@ -12,8 +12,19 @@
 4. copy the resulting jar to your VM:   
    _scp target/pxl-training-base-1.0-SNAPSHOT.jar -i [PATH-TO-PEM-KEY] ec2-user@[YOUR-VM-DNS]_
 5. run your application:  
-   _java -jar pxl-training-base-1.0-SNAPSHOT.jar_
+   _nohup java -jar pxl-training-base-1.0-SNAPSHOT.jar &_
 6. test your application. In postman, change localhost with http://[YOUR-VM-DNS]:8080. 
    Send a request with a valid body.
+7. optionnaly, if you want to stop your java application you have to kill it.  
+   Find the PID (process id). This is an example on a random VM:
+   ```
+   [ec2-user@ip-172-31-21-86 ~]$ ps -ef | grep java
+   ec2-user  474523  474498 98 10:50 pts/0    00:00:03 java -jar /home/ec2-user/pxl-training-exercise1-solution-1.0-SNAPSHOT.jar
+   ec2-user  474538  474498  0 10:50 pts/0    00:00:00 grep --color=auto java
+   ```
+   The PID here is 474523. Use it to kill your java process:
+   ```
+   kill 474523
+   ```
 
     [to step 6](exercice-1-step-6.md) 
