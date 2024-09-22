@@ -14,4 +14,4 @@ The exercice will make you:
 3. Extra: consume Kafka events en send an notification for each of them. 
 4. Extra: error handling.
 
-    [to step 1](exercice-1-step-1.md) 
+    [to step 1](exercise-1-step-1) 

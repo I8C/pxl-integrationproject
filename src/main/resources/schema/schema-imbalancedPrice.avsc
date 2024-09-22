@@ -1,7 +1,7 @@
 {
   "type": "record",
   "name": "TestObject",
-  "namespace": "ca.dataedu",
+  "namespace": "cp4i",
   "fields": [
     {
       "name": "ace",

@@ -20,7 +20,7 @@ Keep this in mind when you configure/program a route.
 1. In the EANConsumptionRoute class, define a REST route with the REST DSL Contract first approach: https://camel.apache.org/manual/rest-dsl-openapi.html  
    Pass it the "PXL_EANConsumptions_API.json" file in the openApi configuration:  
    
-   ```
+   ```java
    rest()
 	.openApi("schema/PXL_EANConsumptions_API.json");
    ```
@@ -31,7 +31,7 @@ Keep this in mind when you configure/program a route.
    
 2. Create the route that will receive the API request.  
    Replace the from("scheduler:...") with the value of the direct route from the previous point. Example:  
-   ```
+   ```java
    from("direct:addEANConsumptions")...
    ```
 
@@ -44,10 +44,10 @@ Keep this in mind when you configure/program a route.
    The result in Posman sould be to receive the 'hello world' text as a response.  
    
 4. expose the OpenSpecs. Use the rest configuration to define an api context: https://github.com/apache/camel/blob/camel-4.2.x/components/camel-openapi-java/src/main/docs/openapi-java.adoc#using-openapi-in-rest-dsl   
-   ```
+   ```java
    restConfiguration()
      .apiContextPath("/api-doc");
    ```
    Run your application an navigate to http://localhost:8080/api-doc to see the result.
    
-    [to step 2](exercice-1-step-2.md) 
+    [to step 2](exercise-1-step-2) 

@@ -5,7 +5,7 @@
 The Json format of the request body is defined in the resources/schema/PXL_EANConsumptions_API.json file.  
 We will use it to validate the imput.  
 
-1. in your route, after the _.log(...)_ call the [json-validator](https://camel.apache.org/components/4.4.x/json-validator-component.html) component:  
+1. In the EANConsumptionRoute class, in your route, after the _.log(...)_ call the [json-validator](https://camel.apache.org/components/4.4.x/json-validator-component.html) component:  
    ```
    .to("json-validator:schema/PXL_EANConsumptions_API.json")   
    ``` 
@@ -17,17 +17,17 @@ We want to send 1 event per EAN Consumption to the Kafka topic.
 Camel offers the [split](https://camel.apache.org/components/4.4.x/eips/split-eip.html) integration pattern to fulfill this.  
 Camel offers as well a Json Path language. It's a way to walk Json documents. You can use it in combination with split to itterate over each Json array element.  
 
-1. in your route after the _json-validator_ added in the previous point, add the split:  
-   ```
+1. In the EANConsumptionRoute class, in your route after the _json-validator_ added in the previous point, add the split:  
+   ```java
    .split().jsonpath("$[*]", List.class )
    ```
 2. after that you have to serialize (= marshal) each element again in order to have it a string.  
    Add the marshalling as the 1st step after the split:  
-   ```
+   ```java
    .marshal().json(JsonLibrary.Jackson)
    ```
 3. eventually add some logging to understand what element of the array you are processing:
-   ```
+   ```java
    .log(">>>>>>>>>>>>> EANConsumption index ${exchangeProperty.CamelSplitIndex} <<<<<<<<<<<<<<<<<")
    .log("${body}")             
    ```
@@ -35,15 +35,15 @@ Camel offers as well a Json Path language. It's a way to walk Json documents. Yo
 ## Define your Avro Schema
 
 To create your Avro Schema from the avro definition:
-1. In your Route configuration method, read you definition and load it:  
-   ```
+1. In the EANConsumptionRoute class, in your Route configuration method, read you definition and load it:  
+   ```java
    ClassPathResource avroSchema = new ClassPathResource("schema/schema-dailyEnergy.avsc", this.getClass().getClassLoader());
    InputStream avroSchemaIS = avroSchema.getInputStream();
    Schema schema = new Schema.Parser().parse(avroSchemaIS);
    ```
 2. Use the schema in your route to deserialize the request body and transform it in a binary Avro output ready for Kafka.  
    Between the to(...) and the from of your route, add a processor that will handle that logic:  
-   ```
+   ```java
    .process(e -> {
 		// Deserialize the JSON string into an Avro GenericRecord
 		Decoder decoder = DecoderFactory.get().jsonDecoder(schema, e.getIn().getBody(String.class));
@@ -64,7 +64,7 @@ To create your Avro Schema from the avro definition:
 	})
    ```
 3. configure the Kafka url and topic to use in your application.properties  
-   ```
+   ```properties
    camel.component.kafka.brokers=localhost:9092
    kafka.energy.info.topic=testtopic
    ```
@@ -73,4 +73,4 @@ To create your Avro Schema from the avro definition:
 5. run your application with the kafka in docker to check that you receive the event inside kafka.
    Becarefull, the body that you send has conform to the Avro definition otherwise you'll get an error because the input is invalid.
    
-    [to step 4](exercice-1-step-4.md) 
+    [to step 4](exercise-1-step-4) 
