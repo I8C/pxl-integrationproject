@@ -62,6 +62,14 @@ To create your Avro Schema from the avro definition:
 
 		e.getIn().setBody(baos.toByteArray());
 	})
+   ```  
+   To help you to select the correct classes to import from Avro here is the list of the one you need:
+   ```java
+   import org.apache.avro.Schema;
+   import org.apache.avro.generic.GenericDatumReader;
+   import org.apache.avro.generic.GenericDatumWriter;
+   import org.apache.avro.generic.GenericRecord;
+   import org.apache.avro.io.*;
    ```
 3. configure the Kafka url and topic to use in your application.properties  
    ```properties

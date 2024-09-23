@@ -25,7 +25,7 @@
    For your information, when a container is started, it choose a random port available to expose it on your machine.  
    In the _'runtimeConfiguration(...)'_ method, the server to connect is dynamically configured to the current local URI.  
    
-   Start you docker server.  
+   Start your docker server. The integration test will use it. 
    Run the integration test. If it succeed, it means that:
    - a Kafka container was started
    - an event was sent on it on a specific topic
