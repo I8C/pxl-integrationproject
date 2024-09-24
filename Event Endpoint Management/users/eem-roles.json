@@ -1,0 +1,136 @@
+{
+	"mappings": [
+		{
+			"id": "eem-admin",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-camel",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student01",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student02",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student03",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student04",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student05",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student06",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student07",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student08",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student09",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student10",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student11",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student12",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student13",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student14",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student15",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student16",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student17",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student18",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student19",
+			"roles": [
+				"author"
+			]
+		},
+		{
+			"id": "eem-aut-student20",
+			"roles": [
+				"author"
+			]
+		}
+	]
+}
