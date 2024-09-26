@@ -50,7 +50,7 @@ public class EANConsumptionRouteITest {
   @EndpointInject("mock:consumeKafkaTopic")
   private MockEndpoint messageConsumer;
 
-  @Value("${kafka.energy.info.topic}")
+  @Value("${kafka.meter.consumption.info.topic}")
   private String topicName;
 
   @DynamicPropertySource

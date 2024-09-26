@@ -19,21 +19,6 @@
    .log(">>>>>>>>>>>>> in my route! <<<<<<<<<<<<<<<<<")
    ```
 
-3. test that you are sending something to Kafa in an integration test using TestContainer framework.  
-   Open the test class _EANConsumptionRouteITest_.  
-   Verify that the producerTemplate.sendBody(...) is set to the same value as your from(...) in you business route _CamelRoute_.  
-   For your information, when a container is started, it choose a random port available to expose it on your machine.  
-   In the _'runtimeConfiguration(...)'_ method, the server to connect is dynamically configured to the current local URI.  
-   
-   Start your docker server. The integration test will use it. 
-   Run the integration test. If it succeed, it means that:
-   - a Kafka container was started
-   - an event was sent on it on a specific topic
-   - exactly one event was consumed from it from that specific topic
-   - the consumed event content is exactly the same as what was sent
-   
-   Take some time to read the test class and the comments to understand how this is working.
-   
 ## Send an event to a local Kafka
 
 Now that you know that you have managed to send an event on a Kafka Test container, lets send an event on local Kafka container.
