@@ -33,8 +33,8 @@ The backend API that was created during the first day should require a valid OAu
 ```xml
       <set-variable name="tokenEndpoint" value="https://login.microsoftonline.com/09385aae-477d-4c3c-bb3d-36f75a52cdc3/oauth2/v2.0/token" />
         <set-variable name="clientId" value="<replace with backend clientId>" />
-        <set-variable name="clientSecret" value="replace with backend secret" />
-        <set-variable name="scope" value="replcace with backend scope" />
+        <set-variable name="clientSecret" value="<replace with backend secret>" />
+        <set-variable name="scope" value="<replace with backend scope>" />
         <!-- Call Azure Active Directory to retriev a token -->
         <send-request mode="new" response-variable-name="tokenResponse" timeout="20" ignore-error="false">
             <set-url>@((string)context.Variables["tokenEndpoint"])</set-url>
