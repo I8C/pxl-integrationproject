@@ -20,8 +20,7 @@
 
 - Software requirements
   - [Postman](https://www.postman.com/downloads/)
-  - [Visual Studio Code](https://code.visualstudio.com/download)
-
+  
 - During this lab, we will add the quarterly info API to our Azure API Management instance. 
 ![API exercise](../../assets/images/apim-exercise.png)
 
