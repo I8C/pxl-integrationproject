@@ -25,5 +25,5 @@
 ![API exercise](../../assets/images/apim-exercise.png)
 
 The following APIs/website definition should be available:
-  - [EANConsumptions API](../../assets/openapispec/PXL_EANConsumptions_API.yaml). For the backend URI use the API endpoint that was setup on Red Hat Camel during the first exercise. In case the API is not available, you can use the following URI: `http://ec2-54-93-184-67.eu-central-1.compute.amazonaws.com:8080/api/v1/eanconsumptions`
+  - [EANConsumptions API](../../assets/openapispec/PXL_EANConsumptions_API.json). For the backend URI use the API endpoint that was setup on Red Hat Camel during the first exercise. In case the API is not available, you can use the following URI: `http://ec2-54-93-184-67.eu-central-1.compute.amazonaws.com:8080/api/v1/eanconsumptions`
 
