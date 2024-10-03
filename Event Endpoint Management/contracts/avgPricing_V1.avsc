@@ -1,0 +1,34 @@
+{
+  "type": "record",
+  "name": "TestObject",
+  "namespace": "cp4i",
+  "fields": [
+    {
+      "name": "AVG_marginaldecrementalprice",
+      "type": "double"
+    },
+    {
+      "name": "AVG_marginalincrementalprice",
+      "type": "double"
+    },
+    {
+      "name": "aggregateStartTime",
+      "type": "long",
+      "logicalType": "timestamp"
+    },
+    {
+      "name": "aggregateEndTime",
+      "type": "long",
+      "logicalType": "timestamp"
+    },
+    {
+      "name": "Type",
+      "type": "double"
+    },
+    {
+      "name": "aggregateResultTime",
+      "type": "long",
+      "logicalType": "timestamp"
+    }
+  ]
+}
