@@ -1,0 +1,51 @@
+{
+  "type": "record",
+  "name": "customer",
+  "namespace": "cp4i",
+  "fields": [
+    {
+      "name": "customerId",
+      "type": "string"
+    },
+    {
+      "name": "customerName",
+      "type": "string"
+    },
+	{
+	  "name": "address",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "address",
+          "fields": [
+            {
+              "name": "city",
+              "type": "string"
+            },
+            {
+              "name": "postalCode",
+              "type": "string"
+            },
+            {
+              "name": "street",
+              "type": "string"
+            },
+            {
+              "name": "number",
+              "type": "string"
+            }
+          ]
+        }
+      }			
+	},
+    {
+      "name": "eanNumber",
+      "type": "string"
+    },
+    {
+      "name": "meterId",
+      "type": "string"
+    }
+  ]
+}
